@@ -1,3 +1,5 @@
 .AppleDouble
 *~
 .vagrant
+*.native
+_build

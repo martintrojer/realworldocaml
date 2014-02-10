@@ -56,9 +56,6 @@ let rec compress = function
 										else compress ( y :: tl)
 ;;
 
-
-compress [1; 1; 1; 2; 3; 3] ;;
-
 (* ================================= *)
 
 last [1;2;3];;
@@ -72,3 +69,4 @@ rev [1;2;3];;
 is_palindrome [1;2] [2;1];;
 
 flatten [ One "a" ; Many [ One "b" ; Many [ One "c" ; One "d" ] ; One "e" ] ] ;;
+compress [1; 1; 1; 2; 3; 3] ;;
