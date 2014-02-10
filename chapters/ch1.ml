@@ -36,8 +36,6 @@ let big_number n = n > 666 ;;
 first_if_true long_string "short" "loooong";;
 first_if_true big_number 4 5 ;;
 
-(fun a -> a + 1) 42;;
-
 (* ======================================== *)
 
 let a_tuple = (3, "three");;
@@ -67,8 +65,6 @@ let rec destutter = function
 ;;
 
 destutter [1;1;2;2;3;4;4;5];;
-
-List.map ~f:(fun a -> a + 1) [1;2;3];;
 
 (* ======================================== *)
 
