@@ -56,6 +56,21 @@ let rec compress = function
 										else compress ( y :: tl)
 ;;
 
+let rec pack xs =
+	let rec consume ch acc = function
+		| [] -> (acc, [])
+		| h :: t as xs -> if ch = h then consume ch (h :: acc) t
+											else (acc, xs)
+	in
+	match xs with
+	| [] -> []
+	| h :: t ->
+		 let (part, nt) = consume h [] xs in
+		 part :: pack nt
+;;
+
+pack ["a";"a";"a";"a";"b";"c";"c";"a";"a";"d";"d";"e";"e";"e";"e"];;
+
 (* ================================= *)
 
 last [1;2;3];;
