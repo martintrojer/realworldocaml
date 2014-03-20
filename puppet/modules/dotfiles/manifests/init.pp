@@ -1,28 +1,13 @@
+define dotfiles::link {
+  $parts = split($title, '/')
+  file { $title :
+    ensure => link,
+    target => sprintf("/home/vagrant/dotfiles/%s", $parts[-1]),
+    require => Exec['dotfiles'],
+  }
+}
+
 class dotfiles {
-
-  File {
-    owner => vagrant,
-    group => vagrant,
-    mode => 0644,
-  }
-
-  file { '.ocamlinit' :
-    name => '/home/vagrant/.ocamlinit',
-    ensure => present,
-    source => 'puppet:///modules/dotfiles/.ocamlinit',
-  }
-
-  file { '.gitconfig' :
-    name => '/home/vagrant/.gitconfig',
-    ensure => present,
-    source => 'puppet:///modules/dotfiles/.gitconfig',
-  }
-
-  file { '.tmux.conf' :
-    name => '/home/vagrant/.tmux.conf',
-    ensure => present,
-    source => 'puppet:///modules/dotfiles/.tmux.conf',
-  }
 
   file_line { '.bashrc':
     path => '/home/vagrant/.bashrc',
@@ -30,12 +15,17 @@ class dotfiles {
   }
 
   package { 'git' : ensure => present }
-
-  exec { '.emacs.d' :
+  ->
+  exec { 'dotfiles' :
     cwd => '/home/vagrant',
     user => vagrant,
-    command => '/usr/bin/git clone https://github.com/martintrojer/.emacs.d.git',
-    creates => '/home/vagrant/.emacs.d',
-    require => Package['git'],
+    command => '/usr/bin/git clone https://github.com/martintrojer/dotfiles.git',
+    creates => '/home/vagrant/dotfiles',
   }
+
+  link { '/home/vagrant/.tmux.conf' : }
+  link { '/home/vagrant/.gitconfig' : }
+  link { '/home/vagrant/.ocamlinit' : }
+  link { '/home/vagrant/.emacs.d' : }
+
 }
