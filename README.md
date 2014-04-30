@@ -7,6 +7,7 @@ My setup is Vagrant and Emacs ([Tuareg](http://www.emacswiki.org/emacs/TuaregMod
 ```
 $ git submodule init
 $ git submodule update
+$ vagrant box add trusty64 https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
 $ vagrant up
 ```
 
