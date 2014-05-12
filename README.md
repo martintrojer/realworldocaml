@@ -4,6 +4,8 @@ My setup is Vagrant and Emacs ([Tuareg](http://www.emacswiki.org/emacs/TuaregMod
 
 ## Usage
 
+Install [virtualbox](http://virtualbox.org) and [vagrant](http://vagrantup.com).
+
 ```
 $ git submodule init
 $ git submodule update
@@ -13,5 +15,6 @@ $ vagrant up
 
 It takes a long time to compile all opam packages, be patient.
 
+`$ vagrant ssh`
 
 You may want to change `puppet/modules/dotfiles`
