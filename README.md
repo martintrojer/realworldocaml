@@ -1,20 +1,14 @@
 Various snippets while reading http://realworldocaml.org
 
-My setup is Vagrant and Emacs ([Tuareg](http://www.emacswiki.org/emacs/TuaregMode) and [utop](https://github.com/diml/utop))
+My setup is Emacs ([Tuareg](http://www.emacswiki.org/emacs/TuaregMode) and [utop](https://github.com/diml/utop))
 
 ## Usage
 
-Install [virtualbox](http://virtualbox.org) and [vagrant](http://vagrantup.com).
+Use docker (>= 1.5.0)
 
 ```
-$ git submodule init
-$ git submodule update
-$ vagrant box add trusty64 https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
-$ vagrant up
+$ ./build.sh
+$ ./connect.sh
 ```
 
-It takes a long time to compile all opam packages, be patient.
-
-`$ vagrant ssh`
-
-You may want to change `puppet/modules/dotfiles`
+You may want to change Dockerfile to use your dotfiles and change OCAML version.
