@@ -1,11 +1,15 @@
 FROM ubuntu:trusty
 
 RUN apt-get -y update
-RUN apt-get -y install emacs24-nox emacs24-el emacs24-common-non-dfsg
 RUN apt-get -y install git tmux curl silversearcher-ag tree htop unzip wget
 RUN apt-get -y install build-essential curl m4 zlib1g-dev libssl-dev
 
 RUN apt-get -y install software-properties-common
+
+RUN add-apt-repository ppa:martin-trojer/emacs24-termfix
+RUN apt-get -y update
+RUN apt-get -y install emacs24-nox emacs24-el emacs24-common-non-dfsg
+
 RUN add-apt-repository ppa:avsm/ppa
 RUN apt-get -y update
 RUN apt-get -y install camlp4 ocaml opam
